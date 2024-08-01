@@ -1,0 +1,2407 @@
+{
+	"info": {
+		"_postman_id": "941d08db-b7a6-4a66-9130-11d39b46eadd",
+		"name": "GYM Booster",
+		"description": "# 🚀 Get started here\n\nThis template guides you through CRUD operations (GET, POST, PUT, DELETE), variables, and tests.\n\n## 🔖 **How to use this template**\n\n#### **Step 1: Send requests**\n\nRESTful APIs allow you to perform CRUD operations using the POST, GET, PUT, and DELETE HTTP methods.\n\nThis collection contains each of these [request](https://learning.postman.com/docs/sending-requests/requests/) types. Open each request and click \"Send\" to see what happens.\n\n#### **Step 2: View responses**\n\nObserve the response tab for status code (200 OK), response time, and size.\n\n#### **Step 3: Send new Body data**\n\nUpdate or add new data in \"Body\" in the POST request. Typically, Body data is also used in PUT request.\n\n```\n{\n    \"name\": \"Add your name in the body\"\n}\n\n ```\n\n#### **Step 4: Update the variable**\n\nVariables enable you to store and reuse values in Postman. We have created a [variable](https://learning.postman.com/docs/sending-requests/variables/) called `base_url` with the sample request [https://postman-api-learner.glitch.me](https://postman-api-learner.glitch.me). Replace it with your API endpoint to customize this collection.\n\n#### **Step 5: Add tests in the \"Scripts\" tab**\n\nAdding tests to your requests can help you confirm that your API is working as expected. You can write test scripts in JavaScript and view the output in the \"Test Results\" tab.\n\n<img src=\"https://content.pstmn.io/fa30ea0a-373d-4545-a668-e7b283cca343/aW1hZ2UucG5n\" alt=\"\" height=\"1530\" width=\"2162\">\n\n## 💪 Pro tips\n\n- Use folders to group related requests and organize the collection.\n    \n- Add more [scripts](https://learning.postman.com/docs/writing-scripts/intro-to-scripts/) to verify if the API works as expected and execute workflows.\n    \n\n## 💡Related templates\n\n[API testing basics](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=e9a37a28-055b-49cd-8c7e-97494a21eb54&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)  \n[API documentation](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=e9c28f47-1253-44af-a2f3-20dce4da1f18&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)  \n[Authorization methods](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=31a9a6ed-4cdf-4ced-984c-d12c9aec1c27&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20977563",
+		"_collection_link": "https://galactic-equinox-596633.postman.co/workspace/SrpingBoot---TP3-ArquiWeb~c5b89ab3-47d5-4339-a171-fd7964b1fcfd/collection/20977563-941d08db-b7a6-4a66-9130-11d39b46eadd?action=share&source=collection_link&creator=20977563"
+	},
+	"item": [
+		{
+			"name": "Users Things",
+			"item": [
+				{
+					"name": "Administrator",
+					"item": [
+						{
+							"name": "Get All Admins",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api-base}}/user/administrator",
+									"host": [
+										"{{api-base}}"
+									],
+									"path": [
+										"user",
+										"administrator"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get one",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api-base}}/user/administrator/65",
+									"host": [
+										"{{api-base}}"
+									],
+									"path": [
+										"user",
+										"administrator",
+										"65"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Admin",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{api-base}}/user/administrator/6",
+									"host": [
+										"{{api-base}}"
+									],
+									"path": [
+										"user",
+										"administrator",
+										"6"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Admin",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"user_id\": 2,\n    \"type_of_admin_id\": 2,\n    \"description\": \"Capo caporale\",\n    \"active\": true\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api-base}}/user/administrator/2",
+									"host": [
+										"{{api-base}}"
+									],
+									"path": [
+										"user",
+										"administrator",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Register New Admins",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"user_id\": 2,\n    \"type_of_admin_id\": 1,\n    \"description\": \"Le doy permisos de admin porque me voy de vacaciones despues vemos\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api-base}}/user/administrator",
+									"host": [
+										"{{api-base}}"
+									],
+									"path": [
+										"user",
+										"administrator"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Client",
+					"item": [
+						{
+							"name": "Injuries",
+							"item": [
+								{
+									"name": "Get All",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{api-base}}/client/injury/2",
+											"host": [
+												"{{api-base}}"
+											],
+											"path": [
+												"client",
+												"injury",
+												"2"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get One Injury",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{api-base}}/client/injury/get-one/3",
+											"host": [
+												"{{api-base}}"
+											],
+											"path": [
+												"client",
+												"injury",
+												"get-one",
+												"3"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "New Injury",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"client_user_id\": 2,\n    \"name\": \"Tendinitis en la muñeca derecha\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{api-base}}/client/injury",
+											"host": [
+												"{{api-base}}"
+											],
+											"path": [
+												"client",
+												"injury"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Update injury",
+									"request": {
+										"method": "PATCH",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"client_user_id\": 2,\n    \"name\": \"Desgarro esquiotibial derecho\",\n    \"description\": \"Se hizo jugando al futbol. Venia parado hace mucho tiempo\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{api-base}}/client/injury/1",
+											"host": [
+												"{{api-base}}"
+											],
+											"path": [
+												"client",
+												"injury",
+												"1"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get One Injury Copy",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{api-base}}/client/injury/1",
+											"host": [
+												"{{api-base}}"
+											],
+											"path": [
+												"client",
+												"injury",
+												"1"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Attendance",
+							"item": [
+								{
+									"name": "Get All",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{api-base}}/client/attendance",
+											"host": [
+												"{{api-base}}"
+											],
+											"path": [
+												"client",
+												"attendance"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get One",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{api-base}}/client/attendance/get-one/2",
+											"host": [
+												"{{api-base}}"
+											],
+											"path": [
+												"client",
+												"attendance",
+												"get-one",
+												"2"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get By Client",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{api-base}}/client/attendance/2",
+											"host": [
+												"{{api-base}}"
+											],
+											"path": [
+												"client",
+												"attendance",
+												"2"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "New Attendance",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"client_user_id\": 2,\n    \"date\": \"2024-05-22\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{api-base}}/client/attendance",
+											"host": [
+												"{{api-base}}"
+											],
+											"path": [
+												"client",
+												"attendance"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Update Attendance",
+									"request": {
+										"method": "PATCH",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"date\": \"2024-05-30\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{api-base}}/client/attendance/1",
+											"host": [
+												"{{api-base}}"
+											],
+											"path": [
+												"client",
+												"attendance",
+												"1"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Delete",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{api-base}}/client/attendance/2",
+											"host": [
+												"{{api-base}}"
+											],
+											"path": [
+												"client",
+												"attendance",
+												"2"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Suscripcion",
+							"item": []
+						},
+						{
+							"name": "Client Training",
+							"item": [
+								{
+									"name": "Get all User Trainings",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{api-base}}/client/training",
+											"host": [
+												"{{api-base}}"
+											],
+											"path": [
+												"client",
+												"training"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get all Client Trainings",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{api-base}}/client/1/training",
+											"host": [
+												"{{api-base}}"
+											],
+											"path": [
+												"client",
+												"1",
+												"training"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get one User Training",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{api-base}}/client/training/1",
+											"host": [
+												"{{api-base}}"
+											],
+											"path": [
+												"client",
+												"training",
+												"1"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Post User Training",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"weeks\": 6,\n    \"observations\": \"se hace largo porque vas dos veces por semana\",\n    \"training\": {\n        \"id\": 3,\n        \"name\": \"Starter trainin\",\n        \"description\": null,\n        \"active\": true\n    }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{api-base}}/client/2/training",
+											"host": [
+												"{{api-base}}"
+											],
+											"path": [
+												"client",
+												"2",
+												"training"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Update User Training",
+									"request": {
+										"method": "PATCH",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"weeks\": 8,\n    \"observations\": \"esta es la descripcion para el entrenamiento de Ivan\",\n    \"active\": true\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{api-base}}/client/training/3",
+											"host": [
+												"{{api-base}}"
+											],
+											"path": [
+												"client",
+												"training",
+												"3"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Delete User Training",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"weeks\": 4,\n    \"observations\": \"coso de coso\",\n    \"training\": {\n        \"id\": 2,\n        \"name\": \"Full monster\",\n        \"description\": null,\n        \"active\": true\n    }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{api-base}}/client/training/4",
+											"host": [
+												"{{api-base}}"
+											],
+											"path": [
+												"client",
+												"training",
+												"4"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Get All Clients",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api-base}}/user/client",
+									"host": [
+										"{{api-base}}"
+									],
+									"path": [
+										"user",
+										"client"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get one client",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api-base}}/user/client/2",
+									"host": [
+										"{{api-base}}"
+									],
+									"path": [
+										"user",
+										"client",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "New Client",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"user_id\": 2,\n    \"description\": \"Este es un nuevo cliente\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api-base}}/user/client",
+									"host": [
+										"{{api-base}}"
+									],
+									"path": [
+										"user",
+										"client"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Client",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"user_id\": 2,\n    \"description\": \"Nueva descripción\",\n    \"active\": true\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api-base}}/user/client/2",
+									"host": [
+										"{{api-base}}"
+									],
+									"path": [
+										"user",
+										"client",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Client",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{api-base}}/user/client/2",
+									"host": [
+										"{{api-base}}"
+									],
+									"path": [
+										"user",
+										"client",
+										"2"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Auth",
+					"item": [
+						{
+							"name": "Register",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"first_name\": \"Pepe\",\n    \"last_name\": \"Rosemblat\",\n    \"birth_date\": \"1986-11-14\",\n    \"address\": \"Alcorta 4455- CABA\",\n    \"phone\": \"+1-555-555-5555\",\n    \"email\": \"pibe.trosko@example.com\",\n    \"dni\": 12345678,\n    \"password\": \"password123\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api-base}}/auth/register",
+									"host": [
+										"{{api-base}}"
+									],
+									"path": [
+										"auth",
+										"register"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Login",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"carlos.pagni@example.com\",\n    \"password\": \"dasdda2323\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api-base}}/auth/login",
+									"host": [
+										"{{api-base}}"
+									],
+									"path": [
+										"auth",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Refresh Token",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{refresh-token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"refreshToken\": \"{{refresh-token}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api-base}}/auth/refresh-token",
+									"host": [
+										"{{api-base}}"
+									],
+									"path": [
+										"auth",
+										"refresh-token"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Testing",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access-token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api-base}}/auth/test",
+									"host": [
+										"{{api-base}}"
+									],
+									"path": [
+										"auth",
+										"test"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Get All",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api-base}}/user",
+							"host": [
+								"{{api-base}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api-base}}/user/1",
+							"host": [
+								"{{api-base}}"
+							],
+							"path": [
+								"user",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update user",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"first_name\": \"Ivan\",\n    \"last_name\": \"Shagrosky\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api-base}}/user/2",
+							"host": [
+								"{{api-base}}"
+							],
+							"path": [
+								"user",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{api-base}}/user/13",
+							"host": [
+								"{{api-base}}"
+							],
+							"path": [
+								"user",
+								"13"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Gym Things",
+			"item": [
+				{
+					"name": "Muscle",
+					"item": [
+						{
+							"name": "Get all data",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api-base}}/muscle",
+									"host": [
+										"{{api-base}}"
+									],
+									"path": [
+										"muscle"
+									]
+								},
+								"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+							},
+							"response": []
+						},
+						{
+							"name": "Get data By Id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access-token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api-base}}/muscle/6",
+									"host": [
+										"{{api-base}}"
+									],
+									"path": [
+										"muscle",
+										"6"
+									]
+								},
+								"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+							},
+							"response": []
+						},
+						{
+							"name": "Post data",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Successful POST request\", function () {",
+											"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+											"});",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access-token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Gluteos\",\n    \"description\": \"todo el grupo\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api-base}}/muscle",
+									"host": [
+										"{{api-base}}"
+									],
+									"path": [
+										"muscle"
+									]
+								},
+								"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+							},
+							"response": []
+						},
+						{
+							"name": "Update data",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Successful PUT request\", function () {",
+											"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 204]);",
+											"});",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Cuadricep\",\n    \"description\": \"Cuadricep\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api-base}}/muscle/4",
+									"host": [
+										"{{api-base}}"
+									],
+									"path": [
+										"muscle",
+										"4"
+									]
+								},
+								"description": "This is a PUT request and it is used to overwrite an existing piece of data. For instance, after you create an entity with a POST request, you may want to modify that later. You can do that using a PUT request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful PUT request typically returns a `200 OK`, `201 Created`, or `204 No Content` response code."
+							},
+							"response": []
+						},
+						{
+							"name": "Delete data",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Successful DELETE request\", function () {",
+											"    pm.expect(pm.response.code).to.be.oneOf([200, 202, 204]);",
+											"});",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api-base}}/muscle/3",
+									"host": [
+										"{{api-base}}"
+									],
+									"path": [
+										"muscle",
+										"3"
+									]
+								},
+								"description": "This is a DELETE request, and it is used to delete data that was previously created via a POST request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful DELETE request typically returns a `200 OK`, `202 Accepted`, or `204 No Content` response code."
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "MuscleGroup",
+					"item": [
+						{
+							"name": "Muscle On Group",
+							"item": [
+								{
+									"name": "Add muscle to group",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "[\n    {\n        \"id\": 1,\n        \"name\": \"Isquiotibial\",\n        \"description\": \"Isquiotibial\",\n        \"diagram\": \"\",\n        \"active\": true\n    }\n]",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{api-base}}//group-muscle/1/muscle",
+											"host": [
+												"{{api-base}}"
+											],
+											"path": [
+												"",
+												"group-muscle",
+												"1",
+												"muscle"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Delete muscle of group",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{api-base}}//group-muscle/1/muscle/1",
+											"host": [
+												"{{api-base}}"
+											],
+											"path": [
+												"",
+												"group-muscle",
+												"1",
+												"muscle",
+												"1"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Get All",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api-base}}/group-muscle",
+									"host": [
+										"{{api-base}}"
+									],
+									"path": [
+										"group-muscle"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get by ID",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api-base}}/group-muscle/1",
+									"host": [
+										"{{api-base}}"
+									],
+									"path": [
+										"group-muscle",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "New Grpup",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": " {\n    \"name\":        \"Espalda\",\n    \"description\": \"espalda\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api-base}}/group-muscle",
+									"host": [
+										"{{api-base}}"
+									],
+									"path": [
+										"group-muscle"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update data",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"active\": true,\n    \"name\": \"Piernas - cadena posterior\",\n    \"description\": \"miembos inferiores\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api-base}}/group-muscle/1",
+									"host": [
+										"{{api-base}}"
+									],
+									"path": [
+										"group-muscle",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete data",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{api-base}}/group-muscle/3",
+									"host": [
+										"{{api-base}}"
+									],
+									"path": [
+										"group-muscle",
+										"3"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Elements",
+					"item": [
+						{
+							"name": "Get all element",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api-base}}/element",
+									"host": [
+										"{{api-base}}"
+									],
+									"path": [
+										"element"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get one element",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api-base}}/element/1",
+									"host": [
+										"{{api-base}}"
+									],
+									"path": [
+										"element",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "New Element",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"disco\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api-base}}/element",
+									"host": [
+										"{{api-base}}"
+									],
+									"path": [
+										"element"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "New Element Copy",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\" : \"disco\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api-base}}/element/3",
+									"host": [
+										"{{api-base}}"
+									],
+									"path": [
+										"element",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "New Request",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{api-base}}/element/3",
+									"host": [
+										"{{api-base}}"
+									],
+									"path": [
+										"element",
+										"3"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Exercise",
+					"item": [
+						{
+							"name": "Muscle On Exercise",
+							"item": [
+								{
+									"name": "Add muscle to exercise",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "[\n    {\n        \"id\": 3,\n        \"name\": \"Cuadricep\",\n        \"description\": \"Cuadricep\",\n        \"diagram\": null,\n        \"active\": true\n    },\n    {\n        \"id\": 1,\n        \"name\": \"Isquiotibial\",\n        \"description\": \"Isquiotibial\",\n        \"diagram\": \"\",\n        \"active\": true\n    },\n    {\n        \"id\": 14,\n        \"name\": \"Gluteos\",\n        \"description\": \"todo el grupo\",\n        \"diagram\": null,\n        \"active\": true\n    }\n]",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{api-base}}/exercise/4/muscle",
+											"host": [
+												"{{api-base}}"
+											],
+											"path": [
+												"exercise",
+												"4",
+												"muscle"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Delete muscle of excercice",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{api-base}}/exercise/2/muscle/3",
+											"host": [
+												"{{api-base}}"
+											],
+											"path": [
+												"exercise",
+												"2",
+												"muscle",
+												"3"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "GroupMuscle on Exercice",
+							"item": [
+								{
+									"name": "New GroupMuscle on Exercise",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "[\n    {\n        \"id\": 3,\n        \"name\": \"Piernas - cadena anterior\",\n        \"description\": \"Miembros inferiores anterior\",\n        \"diagram\": null,\n        \"active\": true\n    }\n]",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{api-base}}/exercise/4/group-muscle",
+											"host": [
+												"{{api-base}}"
+											],
+											"path": [
+												"exercise",
+												"4",
+												"group-muscle"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "New GroupMuscle on Exercise Copy",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{api-base}}/exercise/3/group-muscle/1",
+											"host": [
+												"{{api-base}}"
+											],
+											"path": [
+												"exercise",
+												"3",
+												"group-muscle",
+												"1"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Element on Exercise",
+							"item": [
+								{
+									"name": "Add element to exercise",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "[\n     {\n        \"id\": 1,\n        \"name\": \"mancuernas\",\n        \"illustration\": null,\n        \"active\": true\n    }\n]",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{api-base}}/exercise/4/element",
+											"host": [
+												"{{api-base}}"
+											],
+											"path": [
+												"exercise",
+												"4",
+												"element"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Delete element from exercise",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{api-base}}/exercise/2/element/1",
+											"host": [
+												"{{api-base}}"
+											],
+											"path": [
+												"exercise",
+												"2",
+												"element",
+												"1"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Get all",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api-base}}/exercise",
+									"host": [
+										"{{api-base}}"
+									],
+									"path": [
+										"exercise"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get one",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api-base}}/exercise/2",
+									"host": [
+										"{{api-base}}"
+									],
+									"path": [
+										"exercise",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "New exercise",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    //   \"element_id\":  2,\n    \"name\": \"Sentadillas con copa\",\n    \"description\": \"Sobre box\"\n    // \"multimedia\":  3,\n    // \"active:\"      Boolean\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api-base}}/exercise",
+									"host": [
+										"{{api-base}}"
+									],
+									"path": [
+										"exercise"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "New exercise Copy",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": 1,\n    \"element_id\": null,\n    \"name\": \"Bicep martillo\"\n    // \"description\": \"ejercicio de bicep\"\n    // \"multimedia\":  3,\n    // \"active:\"      Boolean\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api-base}}/exercise/1",
+									"host": [
+										"{{api-base}}"
+									],
+									"path": [
+										"exercise",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Exercise",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{api-base}}/exercise/1",
+									"host": [
+										"{{api-base}}"
+									],
+									"path": [
+										"exercise",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Routine",
+					"item": [
+						{
+							"name": "Exercise On Routine",
+							"item": [
+								{
+									"name": "Add exercise to Rotune",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "[\n    {\n        \"id\": 4,\n        \"name\": \"Sentadillas con copa\",\n        \"description\": \"Sobre box\",\n        \"multimedia\": null,\n        \"active\": true\n    },\n    {\n        \"id\": 3,\n        \"name\": \"Flexores plancha\",\n        \"description\": \"flexores con maquina\",\n        \"multimedia\": null,\n        \"active\": true\n    }\n]",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{api-base}}/routine/3/exercise",
+											"host": [
+												"{{api-base}}"
+											],
+											"path": [
+												"routine",
+												"3",
+												"exercise"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Add exercise to Rotune Copy",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{api-base}}/routine/3/exercise/3",
+											"host": [
+												"{{api-base}}"
+											],
+											"path": [
+												"routine",
+												"3",
+												"exercise",
+												"3"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Get All routine",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api-base}}/routine",
+									"host": [
+										"{{api-base}}"
+									],
+									"path": [
+										"routine"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get one routine",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api-base}}/routine/3",
+									"host": [
+										"{{api-base}}"
+									],
+									"path": [
+										"routine",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "New Routine",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Volumen Canario brazos\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api-base}}/routine",
+									"host": [
+										"{{api-base}}"
+									],
+									"path": [
+										"routine"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Routine",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Monster piernas\",\n    \"description\": \"Rutina para ganar volumen rápidamente\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api-base}}/routine/3",
+									"host": [
+										"{{api-base}}"
+									],
+									"path": [
+										"routine",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Routine",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{api-base}}/routine/4",
+									"host": [
+										"{{api-base}}"
+									],
+									"path": [
+										"routine",
+										"4"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Session",
+					"item": [
+						{
+							"name": "Routine on Session",
+							"item": [
+								{
+									"name": "Add Routine to Session",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "[\n    //     {\n    //     \"id\": 1,\n    //     \"name\": \"Inicial\",\n    //     \"description\": null,\n    //     \"active\": true\n    // },\n    {\n        \"id\": 2,\n        \"name\": \"Fuerza tren superior\",\n        \"description\": null,\n        \"active\": true\n    }\n]",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{api-base}}/session/1/routine",
+											"host": [
+												"{{api-base}}"
+											],
+											"path": [
+												"session",
+												"1",
+												"routine"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Delete Routine from Session",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "[\n        {\n        \"id\": 1,\n        \"name\": \"Inicial\",\n        \"description\": null,\n        \"active\": true\n    },\n    {\n        \"id\": 2,\n        \"name\": \"Fuerza tren superior\",\n        \"description\": null,\n        \"active\": true\n    }\n]",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{api-base}}/session/1/routine/2",
+											"host": [
+												"{{api-base}}"
+											],
+											"path": [
+												"session",
+												"1",
+												"routine",
+												"2"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Get all Session",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api-base}}/session",
+									"host": [
+										"{{api-base}}"
+									],
+									"path": [
+										"session"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get one Session",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api-base}}/session/1",
+									"host": [
+										"{{api-base}}"
+									],
+									"path": [
+										"session",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Post Session",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Session Hibrida 2\",\n    \"description\": \"Coso de coso\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api-base}}/session",
+									"host": [
+										"{{api-base}}"
+									],
+									"path": [
+										"session"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Session",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Session Hibrida 3\",\n    \"description\": \"Piernas y brazos\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api-base}}/session/3",
+									"host": [
+										"{{api-base}}"
+									],
+									"path": [
+										"session",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Session",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{api-base}}/session/2",
+									"host": [
+										"{{api-base}}"
+									],
+									"path": [
+										"session",
+										"2"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Training",
+					"item": [
+						{
+							"name": "Session on Training",
+							"item": [
+								{
+									"name": "New Request",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "[\n    // {\n    //     \"id\": 1,\n    //     \"name\": \"Session Hibrida\",\n    //     \"description\": \"Piernas y brazos\",\n    //     \"active\": true\n    // },\n    {\n        \"id\": 3,\n        \"name\": \"Session Hibrida 3\",\n        \"description\": \"Piernas y brazos\",\n        \"active\": true\n    }\n]",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{api-base}}/training/2/session",
+											"host": [
+												"{{api-base}}"
+											],
+											"path": [
+												"training",
+												"2",
+												"session"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "New Request",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{api-base}}/training/2/session/3",
+											"host": [
+												"{{api-base}}"
+											],
+											"path": [
+												"training",
+												"2",
+												"session",
+												"3"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Get all Training",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api-base}}/training",
+									"host": [
+										"{{api-base}}"
+									],
+									"path": [
+										"training"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get one Training",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api-base}}/training/2",
+									"host": [
+										"{{api-base}}"
+									],
+									"path": [
+										"training",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "New Training",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Starter trainin\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api-base}}/training",
+									"host": [
+										"{{api-base}}"
+									],
+									"path": [
+										"training"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Training",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Starter training\",\n    \"description\": \"entrenamiento para principiantes\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api-base}}/training/1",
+									"host": [
+										"{{api-base}}"
+									],
+									"path": [
+										"training",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Training",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{api-base}}/training/1",
+									"host": [
+										"{{api-base}}"
+									],
+									"path": [
+										"training",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Bussiness Things",
+			"item": [
+				{
+					"name": "historical Price",
+					"item": [
+						{
+							"name": "Get All",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api-base}}/historical-price",
+									"host": [
+										"{{api-base}}"
+									],
+									"path": [
+										"historical-price"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get One",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api-base}}/historical-price/1",
+									"host": [
+										"{{api-base}}"
+									],
+									"path": [
+										"historical-price",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get By Suscription",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api-base}}/historical-price/suscription/1",
+									"host": [
+										"{{api-base}}"
+									],
+									"path": [
+										"historical-price",
+										"suscription",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "New Request",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{api-base}}/historical-price/11",
+									"host": [
+										"{{api-base}}"
+									],
+									"path": [
+										"historical-price",
+										"11"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Type Of Suscription",
+					"item": [
+						{
+							"name": "Get All",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api-base}}/type-suscription",
+									"host": [
+										"{{api-base}}"
+									],
+									"path": [
+										"type-suscription"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All Copy",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Day\",\n    \"description\": \"dia de entrenamiento\",\n    \"attendance\": 1,\n    \"value\": 3000\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api-base}}/type-suscription",
+									"host": [
+										"{{api-base}}"
+									],
+									"path": [
+										"type-suscription"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"value\": 3000\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api-base}}/type-suscription/5",
+									"host": [
+										"{{api-base}}"
+									],
+									"path": [
+										"type-suscription",
+										"5"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Type Of Admin",
+					"item": [
+						{
+							"name": "Get all type of admin",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api-base}}/typeOfAdmin",
+									"host": [
+										"{{api-base}}"
+									],
+									"path": [
+										"typeOfAdmin"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get by Id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api-base}}/typeOfAdmin/1",
+									"host": [
+										"{{api-base}}"
+									],
+									"path": [
+										"typeOfAdmin",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "New type of admin",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"aasfdas\",\n    \"access_level\": 332,\n    \"desciption\": \"Top level of sewystem asdasdasaccess\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api-base}}/typeOfAdmin",
+									"host": [
+										"{{api-base}}"
+									],
+									"path": [
+										"typeOfAdmin"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Type Of Admin",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{api-base}}/typeOfAdmin/7",
+									"host": [
+										"{{api-base}}"
+									],
+									"path": [
+										"typeOfAdmin",
+										"7"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "id",
+			"value": "1"
+		},
+		{
+			"key": "base_url",
+			"value": "https://postman-rest-api-learner.glitch.me/"
+		}
+	]
+}
