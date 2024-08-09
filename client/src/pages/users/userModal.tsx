@@ -1,6 +1,5 @@
 import { Box, Button, Modal } from '@mui/material'
 import { calculateAge } from '../../utils/calculateAge'
-import { useState } from 'react';
 
 const style = {
     position: 'absolute' as 'absolute',
@@ -15,9 +14,8 @@ const style = {
 };
 
 export default function UserModal(props: any) {
-    const {user, handleClose, open } = props
-
-
+    const { user, handleClose, open } = props
+    
     return (
         <Modal
             open={open}
@@ -31,16 +29,29 @@ export default function UserModal(props: any) {
                         ? <h2 id="parent-modal-title">No se ha seleccionado un usuario</h2>
                         : <>
                             <h2 id="parent-modal-title">{`${user.first_name}, ${user.last_name}`}</h2>
+                            <hr />
                             <p id="parent-modal-description">{`e-mail: ${user.email}`}</p>
                             <p id="parent-modal-description">{`Edad: ${calculateAge(user.birth_date)}`}</p>
                             <p id="parent-modal-description">{`Dirección: ${user.address}`}</p>
+                            <p id="parent-modal-description">{`Genero: ${user.gender.name}`}</p>
                             <p id="parent-modal-description">{`email: ${user.first_name}`}</p>
-                            <p id="parent-modal-description">{`email: ${user.first_name}`}</p>
-                            <p id="parent-modal-description">{`email: ${user.first_name}`}</p>
+                            <p id="parent-modal-description">{`DNI: ${user.dni}`}</p>
+                            {
+                                user.client
+                                    ? <p id="parent-modal-description">{`El usuario es cliente`}</p>
+                                    : <p id="parent-modal-description">{`El usuario no es cliente`}</p>
+                            }
+                            {
+                                user.administrator
+                                    ? <p id="parent-modal-description">{`DNI: ${user.administrator.name}`}</p>
+                                    : <p id="parent-modal-description">{`El usuario no es administrador`}</p>
+                            }
                         </>
                 }
                 {/* <ChildModal /> */}
-                <Button onClick={handleClose}>Volver</Button>
+                <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+                    <Button sx={{ px: '20px', background: '#e3e3e3', color: '#2e2e2e', '&:hover': { color: '#e8e8e8', background: '#3f3f3f' } }} onClick={handleClose}>Volver</Button>
+                </Box>
             </Box>
         </Modal>
     )
