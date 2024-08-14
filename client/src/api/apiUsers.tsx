@@ -23,8 +23,6 @@ export class ApiUsers {
     }
 
     async updateUser(access_token: string, user: any): Promise<User> {
-        console.log(user);
-
         try {
 
             // const formData = new FormData();
@@ -42,13 +40,40 @@ export class ApiUsers {
             }
             const response = await fetch(url, params);
             if (!response.ok) {
-                throw new Error('Failed to fetch users');
+                throw new Error('Failed to pathch users');
             }
             const userResponse: User = await response.json();
 
             return userResponse
         } catch (error) {
-            throw new Error('Failed to fetch users');
+            throw new Error('Failed to pathch user');
+        }
+    }
+    async createUser(access_token: string, user: any): Promise<User> {
+        try {
+
+            // const formData = new FormData();
+            // Object.keys(user).forEach((key) => {
+            //     formData.append(key, user[key]);
+            // });
+            const url = `${API_BASE}/${API_ROUTES.USERS}`
+            const params = {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    // 'Authorization': `Bearer ${access_token}`, // Si necesitas enviar un token de autorización
+                },
+                body: JSON.stringify(user),
+            }
+            const response = await fetch(url, params);
+            if (!response.ok) {
+                throw new Error('Failed to create user');
+            }
+            const userResponse: User = await response.json();
+
+            return userResponse
+        } catch (error) {
+            throw new Error('Failed to create user');
         }
     }
 }
