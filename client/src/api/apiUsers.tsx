@@ -18,14 +18,13 @@ export class ApiUsers {
 
             return usersResponse
         } catch (error) {
-            console.error(error);
-            return null
+            throw ({ msg: 'error when try to get users', error });
         }
     }
 
     async updateUser(access_token: string, user: any): Promise<User> {
         console.log(user);
-        
+
         try {
 
             // const formData = new FormData();

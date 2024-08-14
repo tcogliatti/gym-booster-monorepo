@@ -160,7 +160,14 @@ export default function CreateEditModalUser(props: any) {
 
                     <Box sx={{ display: 'flex', justifyContent: 'center', gap: '10px', marginTop: '30px' }}>
                         <Button variant="contained" onClick={handleCloseModal} startIcon={<ArrowBackIcon />}>Volver</Button>
-                        <Button variant="outlined" type='submit' endIcon={<SendIcon />}>Modificar </Button>
+                        <Button variant="outlined" type='submit' endIcon={<SendIcon />}>
+                        {
+                            user
+                            ? 'Modificar'
+                            : 'Crear'
+                        }
+                         
+                        </Button>
                     </Box>
                 </form>
 

@@ -12,40 +12,42 @@ interface GetUserByPageParams {
 }
 
 export function useUser() {
+    const [searchParams, setSearchParams] = useSearchParams();
 
-    // const [users, setUsers] = useState<User[] | null>(null)
     const [pagination, setPagination] = useState<ListResponse | null>(null)
-    const [page, setPage] = useState(1)
-    const [limit, setLimit] = useState(LIMIT_PAGE_DEFAULT)
+    const [page, setPage] = useState(searchParams.get('page') || 1)
+    const [limit, setLimit] = useState(searchParams.get('limit') || LIMIT_PAGE_DEFAULT)
     const [refreshUserList, setRefreshUserList] = useState(false)
     const [isLoading, setIsLoading] = useState(false)
+    const [error, setError] = useState(false)
 
-    const handleRefreshUsers = () => {
+    const handleRefreshUsers = () => {        
+        setPage(searchParams.get('page') || 1)     
+        setLimit(searchParams.get('limit') || LIMIT_PAGE_DEFAULT)   
         setRefreshUserList(prevState => !prevState)
     }
 
+
     useEffect(() => {
+
         setIsLoading(true)
-        apiUsers.getAllUsers({ page, limit }).then(response => {
+        apiUsers.getAllUsers({ page, limit })
+            .then(response => {
 
-            if (!response)
-                setPagination(null)
+                if (!response)
+                    setPagination(null)
 
-            setPagination(response)
-            setIsLoading(false)
+                setPagination(response)
+                setIsLoading(false)
+                setError(false)
+            })
+            .catch(error => {
+                setError(true)
+                console.error(error);
+            })
 
-        })
 
-    }, [page, limit, refreshUserList])
+    }, [refreshUserList])
 
-    const getUsersByPage = ({ getPage, getLimit}: GetUserByPageParams) => {
-        if (getPage)
-            setPage(getPage)
-        if(getLimit)
-            setLimit(getLimit)
-    }
-
-    
- 
-    return ({ pagination: pagination, getUsersByPage, handleRefreshUsers, isLoading: isLoading })
+    return ({ pagination: pagination, handleRefreshUsers, isLoading: isLoading, error: error })
 }
