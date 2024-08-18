@@ -6,16 +6,30 @@ const apiGender = new ApiGender()
 
 export default function useGender() {
     const [genderList, setGenderList] = useState<Gender[] | null>(null)
-    
-    useEffect(() => {
-        try {
-            apiGender.getAllGender({access_token: 'ss'})
-            .then(response => setGenderList(response))
+    const [isLoading, setIsLoading] = useState(false)
+    const [error, setError] = useState(false)
 
-        } catch (error) {
-            setGenderList(null)
-        }
+    useEffect(() => {
+        setIsLoading(true)
+        setError(false)
+        apiGender.getAllGender({ access_token: 'ss' })
+            .then((response) => {
+                if (response) {
+                    setGenderList(response)
+                    setIsLoading(false)
+                } else {
+                    setGenderList(null)
+                    setError(true)
+                    console.error({msg: 'Error to fetch data', error: error});
+                }
+                
+            })
+            .catch((error) => {
+                setGenderList(null)
+                setError(true)
+                console.error({msg: 'Error to fetch data', error: error});
+            })
     }, [])
-    
-  return ({genders: genderList})
+
+    return ({ genders: genderList, error: error, isLoading: isLoading })
 }

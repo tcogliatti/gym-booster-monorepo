@@ -7,3 +7,10 @@ export const API_ROUTES = {
 }
 export const LIMIT_PAGE_DEFAULT = 5
 export const LIMIT_ITEMS_PAGINATION_OPTIONS: number[] = [5, 10, 20, 50]
+export const APP_ROUTES = {
+    USERS: {
+        LIST: '/users',
+        NEW: 'new',
+        EDIT:'/users/edit'
+    }
+}

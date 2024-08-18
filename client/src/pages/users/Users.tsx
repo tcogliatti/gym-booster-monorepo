@@ -3,10 +3,12 @@ import { Box, Button, Paper, Typography } from '@mui/material';
 import User from "../../interfaces/user";
 import Loader from "../../components/loader/loader";
 import ErrorApi from "../../components/errorApi/errorApi";
-import UserList from "./userList";
+import UserList from "../../components/user/userList";
 import { useState } from "react";
-import CreateEditModalUser from "./CreateEditModal/createEditModal";
+import CreateEditModalUser from "../../components/user/CreateEditModal/createEditModal";
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
+import { useNavigate } from "react-router-dom";
+import { APP_ROUTES } from "../../../constants";
 
 
 export default function Users() {
@@ -17,7 +19,10 @@ export default function Users() {
     const handleClose = () => {
         setCreateNewUser(prevState => !prevState)
     }
-
+    const navigate = useNavigate();
+    const handleNewUser = () => {
+        navigate(APP_ROUTES.USERS.NEW)
+    }
     return (
         <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height: '100%', gap: '20px' }}>
 
@@ -29,7 +34,8 @@ export default function Users() {
                         variant="contained"
                         color="success" sx={{ mx: 'auto' }}
                         endIcon={<PersonAddIcon />}
-                        onClick={handleClose}
+                        onClick={handleNewUser}
+                        
                     >
                         Crear Usuario
                     </Button>
@@ -57,7 +63,7 @@ export default function Users() {
             }
 
             { // Mensaje de error 
-                (error && !isLoading) &&
+                (error ) &&
                 <Box sx={{ display: 'flex', flexDirection: 'column', flexGrow: 1, height: '100%', gap: '20px' }}>
                     <Box sx={{ display: 'flex', flexGrow: 1, height: '100%' }}>
                         <ErrorApi urlDestination={'users'} />

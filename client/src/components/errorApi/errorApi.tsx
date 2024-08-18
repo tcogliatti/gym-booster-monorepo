@@ -8,10 +8,10 @@ export default function ErrorApi(props: any) {
     return (
         <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', padding: '20px', width: '50%', mx: 'auto', my: 'auto' }}>
             <Box sx={{ display: 'flex', justifyContent: 'center', marginBottom: '15px' }}>
-                <ErrorOutlineIcon sx={{ textAlign: 'center', fontSize: '60px' }} />
+                <ErrorOutlineIcon sx={{ textAlign: 'center', fontSize: '60px', color: 'FireBrick' }} />
             </Box>
             <Typography sx={{ textAlign: 'center' }}>En este momento no pudimos procesar los datos</Typography>
-            <Typography sx={{ textAlign: 'center' }}>Vuelve a intentarlo más tarde</Typography>
+            <Typography sx={{ textAlign: 'center', fontSize: '14px'}}>Vuelve a intentarlo más tarde</Typography>
             <Button LinkComponent={'a'} href={urlDestination} sx={{ width: '200px', marginTop: '25px' }} endIcon={<RotateLeftIcon />}>Reintentar</Button>
         </Box>
     )

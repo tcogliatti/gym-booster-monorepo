@@ -20,7 +20,7 @@ export default function UserList(props: any) {
 
     const handleLimitChange = (newLimit: number) => {
         setLimit(newLimit);
-        setSearchParams({ page: String(page), limit: String(newLimit) });
+        setSearchParams({ page: String(1), limit: String(newLimit) });
         window.scrollTo({ top: 0, behavior: 'smooth' })
         setPage(1)
     }

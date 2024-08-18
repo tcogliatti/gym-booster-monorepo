@@ -1,5 +1,6 @@
 import * as yup from 'yup'
 import User from '../../../interfaces/user'
+import { useDeferredValue } from 'react'
 
 export function initialValues(user: any) {
     return {
@@ -9,7 +10,7 @@ export function initialValues(user: any) {
             phone: user?.phone || '',
             address: user?.address || '',
             birth_date: user?.birth_date || '',
-            gender_id: user?.gender.id || undefined,
+            gender_id: user?.gender.id || 0,
             dni: user?.dni || undefined,
             password: user?'Contraseña.3' : '',
             password_confirmation: user?'Contraseña.3' : '',

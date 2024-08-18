@@ -22,6 +22,22 @@ export class ApiUsers {
         }
     }
 
+    async getUsersById(params: any): Promise<User | null> {
+        const { accessToken, idUser } = params
+        try {
+            const url = `${API_BASE}/${API_ROUTES.USERS}/${idUser}`
+            const response = await fetch(url);
+            if (!response.ok) {
+                throw new Error('Failed to fetch user by ID');
+            }
+            const usersResponse: User = await response.json();
+
+            return usersResponse
+        } catch (error) {
+            throw ({ msg: 'error when try to get user by ID', error });
+        }
+    }
+
     async updateUser(access_token: string, user: any): Promise<User> {
         try {
 

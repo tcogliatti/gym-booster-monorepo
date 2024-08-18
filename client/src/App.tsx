@@ -7,6 +7,8 @@ import Home from './pages/home/Home'
 import Clients from './pages/clients/Clients'
 import HeaderApp from './components/headerApp/HeaderApp'
 import Users from './pages/users/Users'
+import EditUser from './pages/users/editUser'
+import CreateUser from './pages/users/createUser'
 
 function App() {
 
@@ -27,11 +29,13 @@ function App() {
       }}>
         <HeaderApp />
         <SideBar />
-        <Box component="main" sx={{ gridArea: 'body', p: 3 , background: '#efefef'}}>
+        <Box component="main" sx={{ gridArea: 'body', p: 3, background: '#efefef' }}>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/clients" element={<Clients />} />
             <Route path="/users" element={<Users />} />
+            <Route path='/users/new' element={<CreateUser />} />
+            <Route path='/users/edit/:id' element={<EditUser />} />
           </Routes>
         </Box>
         <FooterApp />
