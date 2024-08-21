@@ -19,6 +19,8 @@ export default function EditUser(props: any) {
     const { genders, error: errorGetGender, isLoading: isLoadingGetGenders } = useGender()
     const { user, error: errorGetUser, isLoading: isLoadingGetUser, setIdUSer } = useUserByID()
 
+    console.log(user);
+    
     const [newUserData, setNewUserData] = useState<User | null>(null)
     const [openConfirmationModal, setOpenConfirmationModal] = useState(false)
     const [error, setError] = useState<boolean>(errorGetGender && errorGetUser)

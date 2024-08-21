@@ -10,7 +10,9 @@ import { Visibility, VisibilityOff } from '@mui/icons-material';
 import { useState } from 'react';
 import { Gender } from '../../interfaces/gender';
 import { useNavigate } from 'react-router-dom';
-import { APP_ROUTES } from '../../../constants';
+import AddCircleIcon from '@mui/icons-material/AddCircle';
+import { API_BASE, APP_ROUTES } from '../../../constants';
+import './userStyles.scss';
 
 
 const apiUsers = new ApiUsers()
@@ -33,11 +35,26 @@ export default function UserForm(props: any) {
     const handleMouseDownPasswordConfirmation = (event: React.MouseEvent<HTMLButtonElement>) => {
         event.preventDefault();
     }
-    
+
     const navigate = useNavigate();
     const handleBackButton = () => {
         navigate(`${APP_ROUTES.USERS.LIST}`)
     }
+
+    const [imageSelected, setImageSelected] = useState<string | null>(null);
+
+    const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const file = event.target.files?.[0];
+
+        if (file) {
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                setImageSelected(reader.result as string);
+            };
+            reader.readAsDataURL(file);
+        }
+    }
+
 
     const formik = useFormik({
         initialValues: initialValues(user),
@@ -63,33 +80,10 @@ export default function UserForm(props: any) {
     })
     return (
 
-        <form onSubmit={formik.handleSubmit}>
+        <form onSubmit={formik.handleSubmit} encType="multipart/form-data" method="post">
             <FormControl sx={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                <Box sx={{ display: 'flex', width: '100%', justifyContent: 'center', marginBottom: '15px', gap: '15px' }}>
-                    {
-                        user ?
-                            <>
-                                <Avatar
-                                    alt={`${user?.first_name}, ${user?.last_name}`}
-                                    sx={{ border: '1px solid #4E4E4E', height: '80px', width: '80px', bgcolor: deepPurple[500] }}
-                                    src="">
-                                    {`${user?.first_name[0].toUpperCase()}${user?.last_name[0].toUpperCase()}`}
-                                </Avatar>
-                                <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                                    <Typography variant="caption">ID: {user?.id}</Typography>
-                                    <Typography variant="caption">Alta: {user?.signup_date ? user.signup_date.split('T')[0] : 'Sin datos'}</Typography>
-                                </Box>
-                            </>
-                            :
-                            <Avatar
-                                alt={`espacio para subir el avatar`}
-                                sx={{ border: '1px solid #4E4E4E', height: '80px', width: '80px', bgcolor: deepPurple[500] }}
-                                src="">
-                            </Avatar>
-                    }
 
-                </Box>
-                <Box sx={{ display: 'flex', justifyContent: 'space-between', gap: '10px' }}>
+                <Box sx={{ display: 'flex', justifyContent: 'space-between', gap: '20px', alignItems: 'center' }}>
                     <TextField
                         sx={{ flexGrow: 1 }}
                         id="first_name"
@@ -101,6 +95,88 @@ export default function UserForm(props: any) {
                         error={formik.touched.first_name && Boolean(formik.errors.first_name)}
 
                     />
+
+                    <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+                        {
+                            user ?
+                                <>
+
+<>
+                                    <label htmlFor="contained-button-file" className='label-avatar'>
+                                        <Avatar
+                                            alt={`espacio para subir el avatar`}
+                                            sx={{ border: '1px solid #4E4E4E', height: '100px', width: '100px', bgcolor: deepPurple[500], margin: '10px' }}
+                                            src={imageSelected ? `${imageSelected}` : `${API_BASE}/multimedia-resources/avatar/user/${user.id}`}>
+                                            {!imageSelected ? <AddCircleIcon sx={{ fontSize: '35px' }} /> : ''}
+                                        </Avatar>
+                                        <AddCircleIcon sx={{ position: 'absolute', fontSize: '35px', right: '41%', top: '30%' }} />
+                                    </label>
+
+                                    <Box sx={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+                                        <input
+                                            accept="image/*"
+                                            style={{ display: 'none' }}
+                                            id="contained-button-file"
+                                            multiple
+                                            type="file"
+                                            name="avatar"
+                                            onChange={handleFileChange}
+                                        />
+                                        {/* <label htmlFor="contained-button-file">
+                                        <Button variant="contained" component="span">
+                                            Subir Archivo
+                                        </Button>
+                                    </label> */}
+                                    </Box>
+                                </>
+                                    {/* <Avatar
+                                        alt={`${user?.first_name}, ${user?.last_name}`}
+                                        sx={{ border: '1px solid #4E4E4E', height: '80px', width: '80px', bgcolor: deepPurple[500] }}
+                                        src={`${API_BASE}/multimedia-resources/avatar/user/${user.id}`}>
+                                        {
+                                            
+                                        // `${user?.first_name[0].toUpperCase()}${user?.last_name[0].toUpperCase()}`
+                                        
+                                        }
+                                    </Avatar> */}
+                                    {/* <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                                        <Typography variant="caption">ID: {user?.id}</Typography>
+                                        <Typography variant="caption">Alta: {user?.signup_date ? user.signup_date.split('T')[0] : 'Sin datos'}</Typography>
+
+                                    </Box> */}
+                                </>
+                                : <>
+                                    <label htmlFor="contained-button-file" className='label-avatar'>
+                                        <Avatar
+                                            alt={`espacio para subir el avatar`}
+                                            sx={{ border: '1px solid #4E4E4E', height: '100px', width: '100px', bgcolor: deepPurple[500], margin: '10px' }}
+                                            src={imageSelected ? `${imageSelected}` : ''}>
+                                            {!imageSelected ? <AddCircleIcon sx={{ fontSize: '35px' }} /> : ''}
+                                        </Avatar>
+                                        { imageSelected && <AddCircleIcon sx={{ position: 'absolute', fontSize: '35px', right: '41%', top: '26%' }} />}
+                                    </label>
+
+                                    <Box sx={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+                                        <input
+                                            accept="image/*"
+                                            style={{ display: 'none' }}
+                                            id="contained-button-file"
+                                            multiple
+                                            type="file"
+                                            name="avatar"
+                                            onChange={handleFileChange}
+                                        />
+                                        {/* <label htmlFor="contained-button-file">
+                                        <Button variant="contained" component="span">
+                                            Subir Archivo
+                                        </Button>
+                                    </label> */}
+                                    </Box>
+                                </>
+                        }
+
+                    </Box>
+
                     <TextField
                         sx={{ flexGrow: 1 }}
                         id="last_name"
@@ -112,17 +188,32 @@ export default function UserForm(props: any) {
                         error={formik.touched.last_name && Boolean(formik.errors.last_name)}
                     />
                 </Box>
-                <TextField
-                    id="email"
-                    label="e-mail"
-                    required
-                    type="email"
-                    variant="standard"
-                    value={formik.values.email}
-                    onChange={formik.handleChange}
-                    error={formik.touched.email && Boolean(formik.errors.email)}
+                <Box sx={{ display: 'flex', gap: '10px' }}>
+                    <TextField
+                        sx={{ flexGrow: 1 }}
+                        id="email"
+                        label="e-mail"
+                        required
+                        type="email"
+                        variant="standard"
+                        value={formik.values.email}
+                        onChange={formik.handleChange}
+                        error={formik.touched.email && Boolean(formik.errors.email)}
+                    />
 
-                />
+                    <TextField
+                        sx={{ flexGrow: 1 }}
+                        id="phone"
+                        label="Teléfono"
+                        required
+                        type="text"
+                        variant="standard"
+                        value={formik.values.phone}
+                        onChange={formik.handleChange}
+                        error={formik.touched.phone && Boolean(formik.errors.phone)}
+                    />
+                </Box>
+
                 {
                     !user &&
                     (
@@ -202,16 +293,17 @@ export default function UserForm(props: any) {
                         onChange={formik.handleChange}
                         error={formik.touched.address && Boolean(formik.errors.address)}
                     />
+
                     <TextField
                         sx={{ flexGrow: 1 }}
-                        id="phone"
-                        label="Teléfono"
+                        id="dni"
+                        label="DNI"
                         required
-                        type="text"
+                        type="number"
                         variant="standard"
-                        value={formik.values.phone}
+                        value={formik.values.dni}
                         onChange={formik.handleChange}
-                        error={formik.touched.phone && Boolean(formik.errors.phone)}
+                        error={formik.touched.dni && Boolean(formik.errors.dni)}
                     />
                 </Box>
 
@@ -253,23 +345,11 @@ export default function UserForm(props: any) {
                 </Box>
 
 
-
-                <TextField
-                    sx={{ width: '60%', mx: 'auto' }}
-                    id="dni"
-                    label="DNI"
-                    required
-                    type="number"
-                    variant="standard"
-                    value={formik.values.dni}
-                    onChange={formik.handleChange}
-                    error={formik.touched.dni && Boolean(formik.errors.dni)}
-                />
             </FormControl>
 
-            <Box sx={{ display: 'flex', justifyContent: 'center', gap: '10px', marginTop: '30px' }}>
-                <Button variant="contained"  startIcon={<ArrowBackIcon />} onClick={handleBackButton} sx={{width: '200px'}} >Volver</Button>
-                <Button variant="outlined" type='submit' endIcon={<SendIcon />} sx={{width: '200px'}}>
+            <Box sx={{ display: 'flex', justifyContent: 'center', gap: '10px', marginTop: '50px' }}>
+                <Button variant="contained" startIcon={<ArrowBackIcon />} onClick={handleBackButton} sx={{ width: '200px' }} >Volver</Button>
+                <Button variant="outlined" type='submit' endIcon={<SendIcon />} sx={{ width: '200px' }}>
                     {
                         user
                             ? 'Modificar'
@@ -278,7 +358,9 @@ export default function UserForm(props: any) {
 
                 </Button>
             </Box>
-        </form>
+        </form >
 
     )
 }
+
+

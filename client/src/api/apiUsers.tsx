@@ -68,26 +68,33 @@ export class ApiUsers {
     async createUser(access_token: string, user: any): Promise<User> {
         try {
 
-            // const formData = new FormData();
-            // Object.keys(user).forEach((key) => {
-            //     formData.append(key, user[key]);
-            // });
+            const formData = new FormData();
+            Object.keys(user).forEach((key) => {
+                formData.append(key, user[key]);
+            });
+
+            if(user.avatar)
+                formData.append('avatar', user.avatar)
+
+
             const url = `${API_BASE}/${API_ROUTES.USERS}`
             const params = {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json',
                     // 'Authorization': `Bearer ${access_token}`, // Si necesitas enviar un token de autorización
                 },
                 body: JSON.stringify(user),
             }
             const response = await fetch(url, params);
-            if (!response.ok) {
+
+
+            if (!response.ok) 
                 throw new Error('Failed to create user');
-            }
+            
             const userResponse: User = await response.json();
 
             return userResponse
+            
         } catch (error) {
             throw new Error('Failed to create user');
         }
