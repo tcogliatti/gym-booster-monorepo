@@ -40,19 +40,20 @@ export class ApiUsers {
 
     async updateUser(access_token: string, user: any): Promise<User> {
         try {
+            
+            const formData = new FormData();
+            Object.keys(user).forEach((key) => {
+                formData.append(key, user[key]);
+            });
 
-            // const formData = new FormData();
-            // Object.keys(user).forEach((key) => {
-            //     formData.append(key, user[key]);
-            // });
             const url = `${API_BASE}/${API_ROUTES.USERS}/${user.id}`
             const params = {
                 method: 'PATCH',
-                headers: {
-                    'Content-Type': 'application/json',
+                // headers: {
+                //     'Content-Type': 'application/json',
                     // 'Authorization': `Bearer ${access_token}`, // Si necesitas enviar un token de autorización
-                },
-                body: JSON.stringify(user),
+                // },
+                body: formData,
             }
             const response = await fetch(url, params);
             if (!response.ok) {
@@ -66,15 +67,13 @@ export class ApiUsers {
         }
     }
     async createUser(access_token: string, user: any): Promise<User> {
+        
         try {
 
             const formData = new FormData();
             Object.keys(user).forEach((key) => {
                 formData.append(key, user[key]);
             });
-
-            if(user.avatar)
-                formData.append('avatar', user.avatar)
 
 
             const url = `${API_BASE}/${API_ROUTES.USERS}`
@@ -83,7 +82,7 @@ export class ApiUsers {
                 headers: {
                     // 'Authorization': `Bearer ${access_token}`, // Si necesitas enviar un token de autorización
                 },
-                body: JSON.stringify(user),
+                body: formData,
             }
             const response = await fetch(url, params);
 

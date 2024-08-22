@@ -1,9 +1,6 @@
 import { useState, useEffect } from 'react'
 import User from '../interfaces/user'
 import { ApiUsers } from "../api/apiUsers";
-import { useParams} from 'react-router-dom';
-import { ListResponse } from '../interfaces/listResponse';
-import { LIMIT_PAGE_DEFAULT } from "../../constants";
 
 const apiUsers = new ApiUsers()
 

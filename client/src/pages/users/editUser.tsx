@@ -35,7 +35,7 @@ export default function EditUser(props: any) {
         setOpenConfirmationModal(prevState => !prevState)
     }
 
-    useEffect(() => {
+    useEffect(() => { // trae el user del useUserById al renderizar la pag o cambiar el id
         if (id)
             setIdUSer(parseInt(id))
     }, [id])
@@ -49,6 +49,8 @@ export default function EditUser(props: any) {
     }, [errorGetGender, errorGetUser])
 
     useEffect(() => {
+        console.log(newUserData);
+        
         if (!newUserData)
             return
         handleCloseModal()
@@ -57,6 +59,7 @@ export default function EditUser(props: any) {
 
     const handleUpdateData = async () => {
         handleCloseModal()
+        
         try {
             await apiUsers.updateUser('', newUserData)
             navigate(`${APP_ROUTES.USERS.LIST}`)

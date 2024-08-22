@@ -1,0 +1,25 @@
+.row-list-item .commands-list-item {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.row-list-item:hover .commands-list-item {
+    visibility: visible;
+    opacity: 1;
+    display: flex;
+    gap: '20px';
+    background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 29%);
+    position: absolute;
+// right: 24px;
+top: 0;
+right: 0;
+align-items: center;
+    width: 200px;
+    height: 50px;
+    align-content: center;
+    transition: opacity 0.9 ease, visibility 0.2 ease;
+}
+
+// .row-list-item:hover .last-column-item {
+//     display: none;
+// }

@@ -15,8 +15,6 @@ import { API_BASE, APP_ROUTES } from '../../../constants';
 import './userStyles.scss';
 
 
-const apiUsers = new ApiUsers()
-
 export default function UserForm(props: any) {
     const { user, genders, onSend } = props
     const [showPassword, setShowPassword] = useState(false);
@@ -47,6 +45,9 @@ export default function UserForm(props: any) {
         const file = event.target.files?.[0];
 
         if (file) {
+            console.log(file);
+            
+            formik.setFieldValue('avatar', file);
             const reader = new FileReader();
             reader.onloadend = () => {
                 setImageSelected(reader.result as string);
@@ -100,16 +101,20 @@ export default function UserForm(props: any) {
                         {
                             user ?
                                 <>
-
-<>
                                     <label htmlFor="contained-button-file" className='label-avatar'>
                                         <Avatar
                                             alt={`espacio para subir el avatar`}
                                             sx={{ border: '1px solid #4E4E4E', height: '100px', width: '100px', bgcolor: deepPurple[500], margin: '10px' }}
-                                            src={imageSelected ? `${imageSelected}` : `${API_BASE}/multimedia-resources/avatar/user/${user.id}`}>
+                                            src={
+                                                imageSelected ? `${imageSelected}` : 
+                                                `${API_BASE}/multimedia-resources/avatar/user/${user.id}`}>
+                                                {/* (user.avatar? user.avatar.url : '')}> */}
                                             {!imageSelected ? <AddCircleIcon sx={{ fontSize: '35px' }} /> : ''}
                                         </Avatar>
-                                        <AddCircleIcon sx={{ position: 'absolute', fontSize: '35px', right: '41%', top: '30%' }} />
+                                        {
+                                            (imageSelected || user.avatar) &&
+                                            <AddCircleIcon sx={{ position: 'absolute', fontSize: '35px', right: '41%', top: '30%' }} />
+                                        }
                                     </label>
 
                                     <Box sx={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
@@ -122,29 +127,9 @@ export default function UserForm(props: any) {
                                             name="avatar"
                                             onChange={handleFileChange}
                                         />
-                                        {/* <label htmlFor="contained-button-file">
-                                        <Button variant="contained" component="span">
-                                            Subir Archivo
-                                        </Button>
-                                    </label> */}
                                     </Box>
                                 </>
-                                    {/* <Avatar
-                                        alt={`${user?.first_name}, ${user?.last_name}`}
-                                        sx={{ border: '1px solid #4E4E4E', height: '80px', width: '80px', bgcolor: deepPurple[500] }}
-                                        src={`${API_BASE}/multimedia-resources/avatar/user/${user.id}`}>
-                                        {
-                                            
-                                        // `${user?.first_name[0].toUpperCase()}${user?.last_name[0].toUpperCase()}`
-                                        
-                                        }
-                                    </Avatar> */}
-                                    {/* <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                                        <Typography variant="caption">ID: {user?.id}</Typography>
-                                        <Typography variant="caption">Alta: {user?.signup_date ? user.signup_date.split('T')[0] : 'Sin datos'}</Typography>
 
-                                    </Box> */}
-                                </>
                                 : <>
                                     <label htmlFor="contained-button-file" className='label-avatar'>
                                         <Avatar
@@ -153,7 +138,7 @@ export default function UserForm(props: any) {
                                             src={imageSelected ? `${imageSelected}` : ''}>
                                             {!imageSelected ? <AddCircleIcon sx={{ fontSize: '35px' }} /> : ''}
                                         </Avatar>
-                                        { imageSelected && <AddCircleIcon sx={{ position: 'absolute', fontSize: '35px', right: '41%', top: '26%' }} />}
+                                        {imageSelected && <AddCircleIcon sx={{ position: 'absolute', fontSize: '35px', right: '41%', top: '26%' }} />}
                                     </label>
 
                                     <Box sx={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
@@ -166,11 +151,6 @@ export default function UserForm(props: any) {
                                             name="avatar"
                                             onChange={handleFileChange}
                                         />
-                                        {/* <label htmlFor="contained-button-file">
-                                        <Button variant="contained" component="span">
-                                            Subir Archivo
-                                        </Button>
-                                    </label> */}
                                     </Box>
                                 </>
                         }
